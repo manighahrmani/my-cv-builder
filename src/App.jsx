@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CVDisplay from "./components/CVDisplay";
 import CVEntryForm from "./components/CVEntryForm";
-import CVPreview from "./components/CVPreview";
 import "./App.css";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
 
   const [entries, setEntries] = useState([]);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
 
   function handleAddEntry(newEntry) {
     const entryWithId = {
@@ -31,35 +29,10 @@ function App() {
   }
 
   function handleOpenPreview() {
-    setShowPreview(true);
+    // Add class to body to hide builder elements
+    document.body.classList.add('preview-mode');
   }
 
-  function handleClosePreview() {
-    setShowPreview(false);
-  }
-
-  // If preview mode is active, show only the preview
-  if (showPreview) {
-    return (
-      <>
-        <CVPreview personalInfo={personalInfo} entries={entries} />
-        <button 
-          onClick={handleClosePreview}
-          style={{ 
-            position: 'fixed', 
-            top: '10px', 
-            right: '10px',
-            zIndex: 1000 
-          }}
-          className="btn-back"
-        >
-          Back to Editor
-        </button>
-      </>
-    );
-  }
-
-  // Otherwise show the builder interface
   return (
     <div className="app">
       <header className="app-header">

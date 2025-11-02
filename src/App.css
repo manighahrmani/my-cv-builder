@@ -80,26 +80,25 @@ body {
     background-color: #0056b3;
   }
   
-  /* Preview page styles */
-  .cv-preview-page {
-    background: white;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
+  /* Preview mode - hide builder elements */
+  .preview-mode .app-header,
+  .preview-mode .cv-form,
+  .preview-mode .entries-list,
+  .preview-mode .cv-display button {
+    display: none !important;
   }
   
-  .cv-preview-content {
+  .preview-mode .cv-display {
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px;
+  }
+  
+  .preview-mode body {
+    background-color: white;
   }
   
   @media print {
-    .app-header, .cv-form, .entries-list, button, .btn-back {
+    .app-header, .cv-form, .entries-list, button {
       display: none !important;
-    }
-    
-    .cv-preview-page {
-      padding: 0;
     }
   }
