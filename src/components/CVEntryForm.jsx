@@ -1,13 +1,11 @@
-// You can import multiple things from react
-import { React, useState } from "react";
+import { useState } from "react";
 
 function CVEntryForm({ onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     type: "work",
     title: "",
     company: "",
-    startDate: "",
-    endDate: "",
+    date: "",
     location: "",
     description: "",
   });
@@ -17,7 +15,6 @@ function CVEntryForm({ onSubmit, onCancel }) {
   function handleChange(field, value) {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -51,13 +48,11 @@ function CVEntryForm({ onSubmit, onCancel }) {
 
     onSubmit(formData);
 
-    // Reset form
     setFormData({
       type: "work",
       title: "",
       company: "",
-      startDate: "",
-      endDate: "",
+      date: "",
       location: "",
       description: "",
     });
@@ -80,7 +75,9 @@ function CVEntryForm({ onSubmit, onCancel }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="title">Title *</label>
+        <label htmlFor="title">
+          {formData.type === "work" ? "Job Title" : "Degree/Qualification"} *
+        </label>
         <input
           id="title"
           value={formData.title}
@@ -91,33 +88,25 @@ function CVEntryForm({ onSubmit, onCancel }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="company">Company/School *</label>
+        <label htmlFor="company">
+          {formData.type === "work" ? "Company" : "School/University"} *
+        </label>
         <input
           id="company"
           value={formData.company}
           onChange={(e) => handleChange("company", e.target.value)}
-          placeholder="e.g., Tech Solutions"
+          placeholder="e.g., Tech Solutions Ltd"
         />
         {errors.company && <span className="error">{errors.company}</span>}
       </div>
 
       <div className="form-group">
-        <label htmlFor="startDate">Start Date</label>
+        <label htmlFor="date">Date Period</label>
         <input
-          id="startDate"
-          value={formData.startDate}
-          onChange={(e) => handleChange("startDate", e.target.value)}
-          placeholder="e.g., January 2023"
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="endDate">End Date</label>
-        <input
-          id="endDate"
-          value={formData.endDate}
-          onChange={(e) => handleChange("endDate", e.target.value)}
-          placeholder="e.g., Present"
+          id="date"
+          value={formData.date}
+          onChange={(e) => handleChange("date", e.target.value)}
+          placeholder="e.g., 2023 - Present"
         />
       </div>
 
@@ -137,15 +126,13 @@ function CVEntryForm({ onSubmit, onCancel }) {
           id="description"
           value={formData.description}
           onChange={(e) => handleChange("description", e.target.value)}
-          placeholder="Describe your role..."
+          placeholder="Describe your role and responsibilities..."
           rows="4"
         />
       </div>
 
       <div className="button-group">
-        <button type="submit" className="btn-submit">
-          Add Entry
-        </button>
+        <button type="submit">Add Entry</button>
         <button type="button" onClick={onCancel} className="btn-cancel">
           Cancel
         </button>

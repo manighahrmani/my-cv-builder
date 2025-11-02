@@ -1,104 +1,331 @@
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text-dark: #1f2937;
+  --text-medium: #4b5563;
+  --text-light: #6b7280;
+  --border-color: #e5e7eb;
+  --background: #f9fafb;
+  --white: #ffffff;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-  }
-  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--background);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* App container */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* App header */
+.app-header {
+  background: var(--white);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  color: var(--text-dark);
+}
+
+/* CV Display */
+.cv-display {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cv-header {
+  text-align: center;
+  padding-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.cv-header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-dark);
+}
+
+.cv-header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cv-header p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* CV Sections */
+.cv-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.cv-section h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* CV Entry */
+.cv-entry {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cv-entry:last-child {
+  border-bottom: none;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--spacing-xs);
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.entry-header h3 {
+  font-size: 1.15rem;
+  color: var(--text-dark);
+}
+
+.entry-header .company {
+  color: var(--text-medium);
+  font-weight: 500;
+}
+
+.date-location {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.description {
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+/* Form styles */
+.cv-form {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cv-form h3 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-dark);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-top: var(--spacing-xs);
+  display: block;
+}
+
+/* Buttons */
+button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+.button-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.btn-cancel {
+  background-color: var(--text-light);
+}
+
+.btn-cancel:hover {
+  background-color: var(--text-medium);
+}
+
+/* Entries management */
+.entries-list {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.entries-list h2 {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
+}
+
+.entry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  background: var(--background);
+  border-radius: 6px;
+  gap: var(--spacing-md);
+}
+
+.entry-item button {
+  background-color: var(--danger);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.entry-item button:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .app {
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: var(--spacing-md);
   }
-  
+
   .app-header {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  .cv-display {
-    background: white;
-    padding: 40px;
-    margin-bottom: 20px;
+
+  .cv-display,
+  .cv-form,
+  .entries-list {
+    padding: var(--spacing-lg);
   }
-  
-  .cv-header {
-    text-align: center;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+
+  .entry-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .cv-section {
-    margin: 30px 0;
+
+  .button-group {
+    flex-direction: column;
   }
-  
-  .cv-entry {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .cv-form {
-    background: white;
-    padding: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
+
+  .button-group button {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
   }
-  
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+
+  .app-header,
+  .cv-form,
+  .entries-list,
   button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Preview mode - hide builder elements */
-  .preview-mode .app-header,
-  .preview-mode .cv-form,
-  .preview-mode .entries-list,
-  .preview-mode .cv-display button {
     display: none !important;
   }
-  
-  .preview-mode .cv-display {
-    max-width: 800px;
-    margin: 0 auto;
+
+  .app {
+    padding: 0;
+    max-width: 100%;
   }
-  
-  .preview-mode body {
-    background-color: white;
+
+  .cv-display {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
   }
-  
-  @media print {
-    .app-header, .cv-form, .entries-list, button {
-      display: none !important;
-    }
+
+  .cv-entry {
+    page-break-inside: avoid;
   }
+
+  .cv-section {
+    page-break-inside: avoid;
+  }
+}

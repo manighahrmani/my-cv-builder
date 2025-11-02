@@ -1,4 +1,3 @@
-import React from "react";
 import CVEntry from "./CVEntry";
 
 function CVSection({ title, entries }) {
